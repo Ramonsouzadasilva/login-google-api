@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres # pega a última versão (18+)
+    container_name: ecommerce_login_google
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: ecommerce_
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ecommerce_google
+      PGDATA: /var/lib/postgresql/data # define diretório personalizado
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # monta o volume no mesmo caminho do PGDATA
+
+volumes:
+  postgres_data:
